@@ -7,7 +7,7 @@
 using namespace std;
 
 int a[4][4],i,j,s=0;
-int resul;
+//int resul;
 int prueba;
 int J = 0;
 int I = 0;
