@@ -18,25 +18,55 @@ cualquier valor de N.
 
 int a[N][N]; //la matriz
 int cont;    //numero de la posicion
+int acum = 1;//el acumulador
+int maxi = 2;    //el maximo
 int fil;     //contador de filas
 int col;     //contador de columnas
 
 void llena_mat()
 {
-
+	if (fil < N)//recorre filas
+	{
+		if (col < N)// recorre columnas
+		{
+			if (col != 0 && fil != 0)// dejar intacta la columna de los 1
+			{
+				cont = col;
+				if (acum < maxi) //vemos que el acumulador sea menor que el acum
+				{
+					acum *= 2;
+					a[fil][col] = acum;
+				}
+				else
+				{
+					a[fil][col] = acum;
+					if (cont + 1 == N)
+						maxi *= 2;
+				}
+			}
+			cout << a[fil][col];
+			col++;
+			llena_mat();
+		}
+		col = 0;
+		acum = 1;
+		fil++;
+		cout << endl;
+		llena_mat();
+	}
 }
 
 int main()
 {
-    for (int i = 0; i < N; i++)
-    {
-        for (int j = 0; j < N; j++)
-        {
-            a[i][j] = 1;
-            llena_mat();
-        }
-        //cout << endl;
-    }
-    system("PAUSE");
-    return 0;
+	for (int i = 0; i < N; i++)
+	{
+		for (int j = 0; j < N; j++)
+		{
+			a[i][j] = 1;
+		}
+		//cout << endl;
+	}
+	llena_mat();
+
+	return 0;
 }
