@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1421957222 source:/home/shiro/Documents/Estructura/Tarea_1/T1_E3_Robot/main.cpp
+	<cstdlib>
+	<iostream>
+
