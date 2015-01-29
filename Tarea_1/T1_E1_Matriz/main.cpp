@@ -19,9 +19,19 @@ cualquier valor de N.
 int a[N][N]; //la matriz
 int cont;    //numero de la posicion
 int acum = 1;//el acumulador
-int maxi = 2;    //el maximo
+int maxi = 2;//el maximo
 int fil;     //contador de filas
 int col;     //contador de columnas
+
+void imprimeMatriz(int m[N][N])
+{
+    for (int i = 0; i < N; ++i) {
+        for (int j = 0; j < N; ++j) {
+            cout << m[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
 
 void llena_mat()
 {
@@ -44,14 +54,14 @@ void llena_mat()
 						maxi *= 2;
 				}
 			}
-			cout << a[fil][col];
+			//cout << a[fil][col];
 			col++;
 			llena_mat();
 		}
 		col = 0;
 		acum = 1;
 		fil++;
-		cout << endl;
+		//cout << endl;
 		llena_mat();
 	}
 }
@@ -64,9 +74,9 @@ int main()
 		{
 			a[i][j] = 1;
 		}
-		//cout << endl;
 	}
 	llena_mat();
+	imprimeMatriz(a);
 
 	return 0;
 }
