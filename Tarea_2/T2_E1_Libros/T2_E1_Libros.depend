@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1391738728 source:/home/shiro/Documents/Estructura_Datos/Tarea_2/T2_E1_Libros/Libro.cpp
+	"Libro.h"
+
+1391738610 /home/shiro/Documents/Estructura_Datos/Tarea_2/T2_E1_Libros/Libro.h
+	<cstdlib>
+	<iostream>
+	<string>
+
+1423335053 source:/home/shiro/Documents/Estructura_Datos/Tarea_2/T2_E1_Libros/main.cpp
+	<cstdlib>
+	<iostream>
+	<string>
+	"Libro.h"
+
