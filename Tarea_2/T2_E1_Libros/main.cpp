@@ -30,18 +30,18 @@ void agregar(int &pos)
 	string editorial;
 	int anio;
 
-	cout<<"inserte titulo"<<endl;
-	cin>>titulo;
-	cout<<"inserte autor"<<endl;
-	cin>>autor;
-	cout<<"inserte numero de paginas"<<endl;
-	cin>>pag;
-	cout<<"inserte numero de edicion"<<endl;
-	cin>>edicion;
-	cout<<"inserte editorial"<<endl;
-	cin>>editorial;
-	cout<<"inserte año de publicacion"<<endl;
-	cin>>anio;
+	cout << "inserte titulo" << endl;
+	cin >> titulo;
+	cout << "inserte autor" << endl;
+	cin >> autor;
+	cout << "inserte numero de paginas" << endl;
+	cin >> pag;
+	cout << "inserte numero de edicion" << endl;
+	cin >> edicion;
+	cout << "inserte editorial" << endl;
+	cin >> editorial;
+	cout << "inserte año de publicacion" << endl;
+	cin >> anio;
 
 	biblioteca[pos]=new Libro(autor,titulo,pag,edicion,editorial,anio);
 
@@ -53,10 +53,10 @@ void eliminar()
 {
 	int pos =0;
 
-	cout<<"que libro desea eliminar (su posision)"<<endl;
-	cin>>pos;
+	cout << "que libro desea eliminar (su posision)" << endl;
+	cin >> pos;
 
-	biblioteca[pos]=NULL;
+	biblioteca[pos] = NULL;
 
 	return;
 }
@@ -75,7 +75,7 @@ int askChoice()
 
 	int choice;
 
-	cin>>choice;
+	cin >> choice;
 
 	return choice;
 }
@@ -109,39 +109,43 @@ int main()
 			break;
 
 		case 4:
-			cout<<" antes de que fecha desea buscar"<<endl;
-			cin>>fecha;
+			cout << " antes de que fecha desea buscar" << endl;
+			cin >> fecha;
 			biblioteca[pos]->iAntes(fecha,n,biblioteca);
 			break;
 
 		case 5:
-			cout<<" despues de que fecha desea buscar"<<endl;
-			cin>>fecha;
+			cout << " despues de que fecha desea buscar" << endl;
+			cin >> fecha;
 			biblioteca[pos]->iDespues(fecha,n,biblioteca);
 			break;
 
 		case 6:
-			cout<<" primera fecha para buscar"<<endl;
-			cin>>ini;
-			cout<<" ultima fecha para buscar"<<endl;
-			cin>>fin;
+			cout << " primera fecha para buscar" << endl;
+			cin >> ini;
+			cout << " ultima fecha para buscar" << endl;
+			cin >> fin;
 			biblioteca[pos]->iEntreFechas(ini,fin,n,biblioteca);
 			break;
 
 		case 7:
-			cout << "que editorial deasea buscar" <<endl; cin>> zain;
+			cout << "que editorial deasea buscar" << endl;
+			cin >> zain;
 			biblioteca[pos]->iEditorial(zain,n,biblioteca);
 			break;
 
 		case 8:
-			cout << "que autora deasea buscar" <<endl; cin>> zain;
+			cout << "que autora deasea buscar" << endl;
+			cin >> zain;
 			biblioteca[pos]->iAutor(zain,n,biblioteca);
 			break;
 
         case 0:
+            cout << "Bye!" << endl;
             break;
 
-		default: cout << " opcion invalida " << endl;
+		default:
+            cout << " opcion invalida " << endl;
 			break;
 		}
 	}while(choice != 0);

@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1423508875 source:/home/shiro/Documents/Estructura_Datos/Tarea_2/T2_E2_Arrays/OrdenamientoGenerico.cpp
+	"OrdenamientoGenerico.h"
+
+1423508933 /home/shiro/Documents/Estructura_Datos/Tarea_2/T2_E2_Arrays/OrdenamientoGenerico.h
+	<iostream>
+
+1423769687 source:/home/shiro/Documents/Estructura_Datos/Tarea_2/T2_E2_Arrays/main.cpp
+	<iostream>
+	<cstdlib>
+	"OrdenamientoGenerico.h"
+	<algorithm>
+	<ostream>
+	<iterator>
+
