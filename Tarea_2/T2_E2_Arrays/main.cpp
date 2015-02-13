@@ -15,8 +15,8 @@ arreglo resultante de ordenarlas ascendente y descendentemente, utilizando el m√
 clase Ordenamiento seleccionado por el usuario
 */
 
-typedef bool (*t_orden) (int, int);
-typedef void (*t_algoritmo) (int[], int, t_orden); //defines el tipo de void, el * es el nombre y lo que recibe la funcion.
+typedef bool (*t_orden) (int, int); //definimos un tipo que es bool como nuestras funciones
+typedef void (*t_algoritmo) (int[], int, t_orden); //defines el tipo de void como nuestras funciones, el * es el nombre y lo que recibe la funcion.
 
 int genera()
 {

@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1423791031 source:/home/shiro/Documents/Estructura_Datos/Tarea_2/T2_E3_Libros2/Libro.cpp
+	"Libro.h"
+
+1423789759 /home/shiro/Documents/Estructura_Datos/Tarea_2/T2_E3_Libros2/Libro.h
+	<cstdlib>
+	<iostream>
+	<string>
+
+1423508875 source:/home/shiro/Documents/Estructura_Datos/Tarea_2/T2_E3_Libros2/OrdenamientoGenerico.cpp
+	"OrdenamientoGenerico.h"
+
+1423508933 /home/shiro/Documents/Estructura_Datos/Tarea_2/T2_E3_Libros2/OrdenamientoGenerico.h
+	<iostream>
+
+1423791069 source:/home/shiro/Documents/Estructura_Datos/Tarea_2/T2_E3_Libros2/main.cpp
+	<iostream>
+	<cstdlib>
+	<algorithm>
+	<iterator>
+	"Libro.h"
+	"OrdenamientoGenerico.h"
+
