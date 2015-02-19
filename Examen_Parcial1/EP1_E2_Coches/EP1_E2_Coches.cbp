@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -22,6 +23,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -29,8 +31,24 @@
 			</Target>
 		</Build>
 		<Compiler>
+			<Add option="-std=c++11" />
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="include/Auto.h" />
+		<Unit filename="include/Cliente.h" />
+		<Unit filename="include/OrdenamientoGenerico.h" />
+		<Unit filename="include/camioneta.h" />
+		<Unit filename="include/coche.h" />
+		<Unit filename="include/concesionaria.h" />
+		<Unit filename="include/motocicleta.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="src/Auto.cpp" />
+		<Unit filename="src/Cliente.cpp" />
+		<Unit filename="src/OrdenamientoGenerico.cpp" />
+		<Unit filename="src/camioneta.cpp" />
+		<Unit filename="src/coche.cpp" />
+		<Unit filename="src/concesionaria.cpp" />
+		<Unit filename="src/motocicleta.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

@@ -1,33 +1,53 @@
 # depslib dependency file v1.0
-1424373375 source:/home/shiro/Documents/Estructura_Datos/Examen_Parcial1/EP1_E2_Coches/main.cpp
+1424374237 source:/home/shiro/Documents/Estructura_Datos/Examen_Parcial1/EP1_E2_Coches/main.cpp
+	<cstdlib>
+	<iostream>
 
-1424373455 source:/home/shiro/Documents/Estructura_Datos/Examen_Parcial1/EP1_E2_Coches/src/Auto.cpp
+1424374885 source:/home/shiro/Documents/Estructura_Datos/Examen_Parcial1/EP1_E2_Coches/src/Auto.cpp
 	"Auto.h"
 
-1424373455 /home/shiro/Documents/Estructura_Datos/Examen_Parcial1/EP1_E2_Coches/include/Auto.h
+1424375938 /home/shiro/Documents/Estructura_Datos/Examen_Parcial1/EP1_E2_Coches/include/Auto.h
+	<iostream>
+	<string>
 
-1424373575 source:/home/shiro/Documents/Estructura_Datos/Examen_Parcial1/EP1_E2_Coches/src/camioneta.cpp
+1424376472 source:/home/shiro/Documents/Estructura_Datos/Examen_Parcial1/EP1_E2_Coches/src/camioneta.cpp
 	"camioneta.h"
 
-1424373575 /home/shiro/Documents/Estructura_Datos/Examen_Parcial1/EP1_E2_Coches/include/camioneta.h
+1424376783 /home/shiro/Documents/Estructura_Datos/Examen_Parcial1/EP1_E2_Coches/include/camioneta.h
+	"Auto.h"
 
 1424373393 source:/home/shiro/Documents/Estructura_Datos/Examen_Parcial1/EP1_E2_Coches/src/Cliente.cpp
 	"Cliente.h"
 
-1424373393 /home/shiro/Documents/Estructura_Datos/Examen_Parcial1/EP1_E2_Coches/include/Cliente.h
+1424377852 /home/shiro/Documents/Estructura_Datos/Examen_Parcial1/EP1_E2_Coches/include/Cliente.h
+	"Auto.h"
+	<iostream>
+	<string>
 
-1424373561 source:/home/shiro/Documents/Estructura_Datos/Examen_Parcial1/EP1_E2_Coches/src/coche.cpp
+1424376295 source:/home/shiro/Documents/Estructura_Datos/Examen_Parcial1/EP1_E2_Coches/src/coche.cpp
 	"coche.h"
 
-1424373561 /home/shiro/Documents/Estructura_Datos/Examen_Parcial1/EP1_E2_Coches/include/coche.h
+1424376183 /home/shiro/Documents/Estructura_Datos/Examen_Parcial1/EP1_E2_Coches/include/coche.h
+	"Auto.h"
 
-1424373587 source:/home/shiro/Documents/Estructura_Datos/Examen_Parcial1/EP1_E2_Coches/src/motocicleta.cpp
+1424376693 source:/home/shiro/Documents/Estructura_Datos/Examen_Parcial1/EP1_E2_Coches/src/motocicleta.cpp
 	"motocicleta.h"
 
-1424373587 /home/shiro/Documents/Estructura_Datos/Examen_Parcial1/EP1_E2_Coches/include/motocicleta.h
+1424376800 /home/shiro/Documents/Estructura_Datos/Examen_Parcial1/EP1_E2_Coches/include/motocicleta.h
+	"Auto.h"
 
 1424373649 source:/home/shiro/Documents/Estructura_Datos/Examen_Parcial1/EP1_E2_Coches/src/OrdenamientoGenerico.cpp
 	"OrdenamientoGenerico.h"
 
-1424373634 /home/shiro/Documents/Estructura_Datos/Examen_Parcial1/EP1_E2_Coches/include/OrdenamientoGenerico.h
+1424374677 /home/shiro/Documents/Estructura_Datos/Examen_Parcial1/EP1_E2_Coches/include/OrdenamientoGenerico.h
+	<iostream>
+
+1424377677 source:/home/shiro/Documents/Estructura_Datos/Examen_Parcial1/EP1_E2_Coches/src/concesionaria.cpp
+	"concesionaria.h"
+
+1424377326 /home/shiro/Documents/Estructura_Datos/Examen_Parcial1/EP1_E2_Coches/include/concesionaria.h
+	"Auto.h"
+	<iostream>
+	<string>
+	"Cliente.h"
 

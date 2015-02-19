@@ -1,11 +1,6 @@
 #include "Auto.h"
 
-Auto::Auto()
+ostream& operator<<(ostream& os, const Auto& a)
 {
-    //ctor
-}
-
-Auto::~Auto()
-{
-    //dtor
+    return a.print(os);
 }

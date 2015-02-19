@@ -8,9 +8,10 @@ using namespace std;
 
 class Auto
 {
+    virtual ostream& print(ostream& os) const = 0;
     public:
-        Auto();
-        virtual ~Auto();
+        virtual ~Auto(){}
+        friend ostream& operator<<(ostream& os, const Auto& a);
 };
 
 #endif // AUTO_H
