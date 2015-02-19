@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1424373918 source:/home/shiro/Documents/Estructura_Datos/Examen_Parcial1/EP1_E1_Hexa/main.cpp
+	<iostream>
+	<string>
+	<sstream>
+	<cstdlib>
+
