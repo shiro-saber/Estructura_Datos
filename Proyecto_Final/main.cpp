@@ -1,14 +1,15 @@
 #include <cstdlib>
 #include <iostream>
 #include <algorithm>
+#include <gtkmm.h>
 
 using namespace std;
 
-using size_type = long unsigned int;
-
-int main(int argc,char* argv[])
+int main(int argc, char* argv[]) 
 {
-        cout << sizeof(size_type)<<std::endl;
-        return 0;
+    Gtk::Main kit(argc, argv);
+    Gtk::Window window;
+    Gtk::Main::run(window);
+    return 0;
 }
 
