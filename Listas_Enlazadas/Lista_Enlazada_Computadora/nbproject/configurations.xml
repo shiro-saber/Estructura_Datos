@@ -4,6 +4,9 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>Computadora.h</itemPath>
+      <itemPath>LinkedList.h</itemPath>
+      <itemPath>Node.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -12,6 +15,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>Computadora.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -35,7 +39,18 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <ccTool>
+          <standard>8</standard>
+        </ccTool>
       </compileType>
+      <item path="Computadora.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Computadora.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="LinkedList.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Node.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
@@ -59,6 +74,14 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="Computadora.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Computadora.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="LinkedList.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Node.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>

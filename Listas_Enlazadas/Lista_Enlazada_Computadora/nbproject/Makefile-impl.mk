@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=Lista_Personas
+PROJECTNAME=Lista_Enlazada_Computadora
 
 # Active Configuration
 DEFAULTCONF=Debug
