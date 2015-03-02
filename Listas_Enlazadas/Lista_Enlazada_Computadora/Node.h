@@ -11,7 +11,8 @@ namespace vcn
     public:
         Node() { }
         Node(T _info) : info(_info) {}
-    
+        ~Node() { next = nullptr; }
+        
         T getInfo() const { return info; }
         void setInfo(T value) { info = value; }
     
