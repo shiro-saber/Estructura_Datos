@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-Linux-x86
 CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux-x86
-CND_ARTIFACT_NAME_Debug=lista_oeraciones
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux-x86/lista_oeraciones
+CND_ARTIFACT_NAME_Debug=lista_operaciones
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux-x86/lista_operaciones
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux-x86/package
-CND_PACKAGE_NAME_Debug=listaoeraciones.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux-x86/package/listaoeraciones.tar
+CND_PACKAGE_NAME_Debug=listaoperaciones.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux-x86/package/listaoperaciones.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux-x86
 CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux-x86
-CND_ARTIFACT_NAME_Release=lista_oeraciones
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux-x86/lista_oeraciones
+CND_ARTIFACT_NAME_Release=lista_operaciones
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux-x86/lista_operaciones
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux-x86/package
-CND_PACKAGE_NAME_Release=listaoeraciones.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/listaoeraciones.tar
+CND_PACKAGE_NAME_Release=listaoperaciones.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/listaoperaciones.tar
 #
 # include compiler specific variables
 #

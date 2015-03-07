@@ -72,9 +72,26 @@ LinkedList<int> * Substraction(LinkedList<int> * a, LinkedList<int> * b) {
     }
 }
 
+int askChoice()
+{
+    cout << "Elige una opcion" << endl;
+    cout << "1) N ⋃ M " << endl;
+    cout << "2) N - M " << endl;
+    cout << "3) M - N " << endl;
+    cout << "4) N * M " << endl;
+    cout << "5) N ⋂ M " << endl;
+    cout << "0) Exit" << endl;
+    
+    int choice;
+    cin >> choice;
+    return choice;
+}
+
 int main(int argc, char** argv) {
+    int choice = askChoice();
     LinkedList<int> * lista1 = new LinkedList<int>();
     LinkedList<int> * lista2 = new LinkedList<int>();
+    LinkedList<int> * temp = new LinkedList<int>();
 
     lista1->insert(1, 0);
     lista1->insert(-1, 1);
@@ -90,8 +107,48 @@ int main(int argc, char** argv) {
 
     cout << "Lista1:" << endl << *lista1; //prueba de que lo haya anexado bien
     cout << "Lista2:" << endl << *lista2;
-
-
+    
+    switch(choice)
+    {
+        case 1: 
+            delete temp;
+            temp = Union(lista1, lista2);
+            cout << "N ⋃ M: " << temp;
+            break;
+            
+        case 2:
+            delete temp;
+            temp = Substraction(lista1, lista2);
+            cout << "N - M: " << temp;
+            break;
+            
+        case 3:
+            delete temp; 
+            temp = Substraction(lista2, lista1);
+            cout << "M - N: " << temp;
+            break;
+            
+        case 4:
+            delete temp;
+            temp = Product(lista1, lista2);
+            cout << "N * M: " << temp;
+            break;
+            
+        case 5:
+            delete temp;
+            temp = Intersection(lista1, lista2);
+            cout << "N ⋂ M: " << temp;
+            break;
+            
+        case 0:
+            cout << "Bye bye";
+            break;
+            
+        default: 
+            cout << "invalido" << endl;
+            break;
+            
+    }while (choice != 0);
 
     return 0;
 }
