@@ -52,7 +52,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=
+LDLIBSOPTIONS=-lgraph -lgraph -lguile-libgraph -lguile-libgraph
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}

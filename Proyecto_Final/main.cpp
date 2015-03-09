@@ -1,15 +1,18 @@
 #include <cstdlib>
 #include <iostream>
 #include <algorithm>
-#include <gtkmm.h>
+#include <graphics.h>
 
 using namespace std;
 
 int main(int argc, char* argv[]) 
 {
-    Gtk::Main kit(argc, argv);
-    Gtk::Window window;
-    Gtk::Main::run(window);
+    int gd = DETECT,gm,x,y;
+    initgraph(&gd,&gm,NULL);
+    rectangle(50,70,100,100);
+    getch();
+    closegraph();
+
     return 0;
 }
 

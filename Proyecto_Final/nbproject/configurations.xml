@@ -38,6 +38,14 @@
         <ccTool>
           <standard>8</standard>
         </ccTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibLibItem>graph</linkerLibLibItem>
+            <linkerLibLibItem>graph</linkerLibLibItem>
+            <linkerLibLibItem>guile-libgraph</linkerLibLibItem>
+            <linkerLibLibItem>guile-libgraph</linkerLibLibItem>
+          </linkerLibItems>
+        </linkerTool>
       </compileType>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
