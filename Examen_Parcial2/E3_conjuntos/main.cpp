@@ -1,177 +1,160 @@
 #include <cstdlib>
 #include "LinkedList.h"
 #include "Pila.h"
+#include "Cola.h"
 
 using namespace std;
 using namespace vcn;
 
-vector<string> &split(const string &s, char delim, vector<string> &elems) {
-    stringstream ss(s);
-    string item;
-    while (getline(ss, item, delim)) 
+bool simbolo(char c)
+{
+    return (c == '+' || c == '*');
+}
+
+void transformar(string aux, Cola<char> &expresion)
+{
+    Pila<char> operadores;
+    LinkedList<int> lista1;
+    LinkedList<int> lista2;
+    int i = 0;
+    char caracter = aux[i];
+    
+    while (caracter)
     {
-        elems.push_back(item);
-    }
-    return elems;
-}
-
-vector<string> split(string &s, char delim) {
-    vector<string> elems;
-    split(s, delim, elems);
-    return elems;
-}
-
-LinkedList<int> * Union(LinkedList<int> * a, LinkedList<int> * b) {
-    LinkedList<int> * temp = new LinkedList<int>();
-    for (int i = 0; i < a->size(); ++i)
-        temp->insertBack(a->at(i)->getInfo());
-    for (int j = 0; j < b->size(); ++j) {
-        bool esta = false;
-        for (int k = 0; k < a->size(); ++k) {
-            if (a->at(k)->getInfo() == b->at(j)->getInfo())
-                esta = true;
+        if (caracter >= '0' && caracter <= '9')
+        {
+            expresion.enqueue(caracter);
         }
-        if (!esta)
-            temp->insertBack((b->at(j)->getInfo()));
-    }
-
-    return temp;
-}
-
-LinkedList<int> * Intersection(LinkedList<int> * a, LinkedList<int> * b) {
-    LinkedList<int> * temp = new LinkedList<int>();
-    for (int i = 0; i < a->size(); ++i)
-        for (int j = 0; j < b->size(); ++j)
-            if (a->at(i)->getInfo() == b->at(j)->getInfo())
-                temp->insertBack(a->at(i)->getInfo());
-
-    return temp;
-}
-
-LinkedList<int> * Product(LinkedList<int> * a, LinkedList<int> * b) {
-    LinkedList<int> * temp = new LinkedList<int>();
-    for (int i = 0; i < a->size(); ++i)
-        for (int j = 0; j < b->size(); ++j)
-            temp->insertBack(a->at(i)->getInfo() * b->at(j)->getInfo());
-
-    return temp;
-}
-
-LinkedList<int> * Substraction(LinkedList<int> * a, LinkedList<int> * b) {
-    LinkedList<int> * temp = new LinkedList<int>();
-    for (int i = 0; i < a->size(); ++i) {
-        bool esta = false;
-        for (int j = 0; j < b->size(); ++j) {
-            if (a->at(i)->getInfo() == b->at(j)->getInfo()) {
-                esta = true;
-                break;
+        else if (simbolo(caracter))
+        {
+            while (!operadores.empty())
+                expresion.enqueue(operadores.pop()->getInfo());
+            operadores.push(caracter);
+        }
+        else if (caracter == '(')
+        {
+            operadores.push(caracter);
+        }
+        else if (caracter == ')')
+        {
+            while (!operadores.empty() && operadores.top()->getInfo() != '(')
+            {
+                expresion.enqueue(operadores.pop()->getInfo());
             }
-        }
-        if (!esta)
-            temp->insertBack(a->at(i)->getInfo());
-    }
-}
-
-bool isMathInitialDelimiter(char c){
-    switch (c) {
-        case '(':
-            return true;
-            break;
-        case '{':
-            return true;
-            break;
-        case '[':
-            return true;
-            break;
-        default:
-            return false;
-            break;
-    }
-}
-
-bool isMathFinalDelimiter(char c){
-    switch (c) {
-        case ')':
-            return true;
-            break;
-        case '}':
-            return true;
-            break;
-        case ']':
-            return true;
-            break;
-        default:
-            return false;
-            break;
-    }
-}
-
-char closerForOpener(char c){
-    switch (c) {
-        case '(':
-            return ')';
-            break;
-        case '{':
-            return '}';
-            break;
-        case '[':
-            return ']';
-            break;
-        default:
-            return ')';
-            break;
-    }
-}
-
-bool isSet(string expression){
-    const char * asdf = expression.c_str();
-    return asdf[0]=='{' && asdf[expression.length()-1]=='}';
-}
-
-LinkedList<int> * setFromExpression(string expression){
-    vector<string> numbers = split(expression, ',');
-    LinkedList<int> * set = new LinkedList<int>();
-    for (int i = 0; i < numbers.size(); ++i) {
-        if (i==0) {
-            int num = atoi(split(numbers[0], '{')[1].c_str());
-            set->insertFront(num);
-        }
-        else if (i==numbers.size()-1){
-            int num = atoi(split(numbers[i], '}')[0].c_str());
-            set->insertFront(num);
-        }
-        else{
-            int num = atoi(numbers[i].c_str());
-            set->insertFront(num);
-        }
-    }
-    return set;
-}
-
-LinkedList<int> * parseExpression(std::string expression){
-    if (isSet(expression)) {
-        return setFromExpression(expression);
-    }
-    else{
-        const char * charMathEquation = expression.c_str();
-        vector<std::string> subExpressions;
-        string subExpression = "";
-        for (int i = 0; i < expression.length(); ++i) {
-            char currentChar = charMathEquation[i];
-            if (isMathInitialDelimiter(currentChar)) {
+            if (operadores.empty())
+            {
+                cout << "Entrada incorrecta";
             }
-            else if (isMathFinalDelimiter(currentChar)){
+            operadores.pop();
+        }
+        else if (caracter == '*')
+        {
+            Node<int> * aux1 = operadores->top();;
 
+            Node<int> * aux2 = expresion->getInicio();
+
+            while(!operadores.empty())
+            {
+                lista1.insertBack(operadores.pop());
+            }
+            while(!expresion.empty())
+            {
+                lista2.insertBack(expresion.dequeue());
+            }
+            for (Node<int> *aux1 = lista1.first(); aux1; aux1 = aux1->getNext())
+            {
+                
+                for (Node<int> *aux2 = lista2.first(); aux2; aux2 = aux2->getNext())
+                {
+                    
+                    operadores.push(aux1->getInfo() * aux2->getInfo());
+                    
+                }
+                lista1.clear();
+                lista2.clear();
+                
+            }
+            
+            operadores.pop();
+        }
+        else if (caracter == '+')
+        {
+            while(!operadores.empty())
+            {
+            lista1.insertBack(operadores.pop());
+            }
+            while(!expresion.empty())
+            {
+                lista2->insertBack(expresion.dequeue());
+            }
+                                 
+            operadores.pop();
+            }
+            Node<int> * auxN = operadores->top();;
+            while (auxN!=NULL)
+                {
+                operadores->push(auxN->getInfo);
+                auxN = auxN->getNext();
+                }
+                        
+            Node<int> * auxM = expresion->getInicio();
+            while(auxM!=NULL)
+            {
+                operadores->push(auxM->getInfo());
+            }
+                lista1.clear();
+                lista2.clear();
+        
+        }
+
+        caracter = aux[++i];
+}
+
+
+
+float verificar(Cola<char> &expresion)
+{
+    Pila<float> operandos;
+    while (!expresion.empty())
+    {
+        if (expresion->getInicio()->getInfo() >= '0' && expresion->getInicio()->getInfo() <= '9')
+        {
+            operandos.push(expresion.dequeue()->getInfo() - 48.0);
+        }
+        if (!expresion.empty() && simbolo(expresion->getInicio()->getInfo()))
+        {
+            if (operandos.size() < 2)
+            {
+                cout << "Lo sentimos, no es valida la operacion";
+            }
+            float o1 = operandos.pop()->getInfo();
+            float o2 = operandos.pop()->getInfo();
+            
+            switch (expresion.dequeue()->getInfo()) {
+                case '+':
+                    operandos.push(o2 + o1);
+                    break;
+                case '*':
+                    operandos.push(o2 * o1);
+                    break;
+                default:
+                    cout << "Lo sentimos, no es valida la operacion";
+                    break;
             }
         }
     }
-}
-
-int main(int argc, const char * argv[]) {
-    std::string expression = Helper::read<std::string>("Enter an expresssion:");
-    std::vector<std::string> splitplus = split(expression, '+');
-    for (int i = 0; i < splitplus.size(); ++i) {
-        Helper::print(splitplus[i]);
+    if (operandos.size() == 1)
+    {
+        return operandos.pop()->getInfo();
+    }
+    else
+    {
+        cout << "Lo sentimos, no es valida la operacion";
     }
     return 0;
+}
+
+int main(int argc, const char * argv[]) 
+{
+
 }

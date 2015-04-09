@@ -4,41 +4,31 @@
 using namespace std;
 using namespace vcn;
 
-LinkedList<int> *check(LinkedList<int> *original , LinkedList<int> *repetidos)
+LinkedList<int> *check(LinkedList<int> *original)
 {
-    LinkedList<int> *aux = new Pila<int>();
-    //bool encontrado = false;
-    Node<int> *temp;
-    int i;
-
-    while((!original->empty()))
-    {
-        temp = original->first();
-        if(temp->getInfo() == original->first()->getNext()->getInfo())
-            repetidos->insert(temp);//encontrado = true;
-        else
-            aux->insert(temp);
-         
-        i++;
-            
-        if(i == original->size())
-            temp = original->first()->getNext();
+    LinkedList<int> * repetidos = new LinkedList<int>();
+    for (int i = 0; i < original->size(); ++i) {
+        for (int j = i + 1; j < original->size(); ++j) {
+            if (original->at(i)->getInfo()==original->at(j)->getInfo()) {
+                int r = original->at(i)->getInfo();
+                bool agregamela = true;
+                for (int k = 0; k < repetidos->size(); ++k) {
+                    if (r==repetidos->at(k)->getInfo()) {
+                        agregamela=false;
+                    }
+                }
+                if (agregamela) {
+                    repetidos->insertFront(r);
+                }
+            }
+        }
     }
-
-    //regresar los elementos de aux->pila
-    while(!aux->empty())
-    {
-	original->insert(aux->first());
-    }
-
-    delete aux;
     return repetidos;
 }
 
 int main(int argc, char** argv) 
 {
     LinkedList<int> *original = new Pila<int>();
-    LinkedList<int> *repetidos = new Pila<int>();
     
     Node<int> *kuz = new Nodo<int>(1);
     Node<int> *kuzemac = new Nodo<int>(7);
@@ -56,12 +46,11 @@ int main(int argc, char** argv)
     
     cout << "Estas el la lista original: \n" << *original << endl;
     
-    check(original, repetidos);
+    LinkedList<int> *repetidos = check(original);
+    cout << "Esta la lista de repetidos: \n" << *repetidos << endl;
     
-    cout << "Esta es la lista de repetidos: \n" << *repetidos << endl;
-    
-    delete original;
     delete repetidos;
+    delete original;
     
     return 0;
 }

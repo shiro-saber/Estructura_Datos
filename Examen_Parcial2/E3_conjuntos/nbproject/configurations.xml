@@ -4,6 +4,7 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>Cola.h</itemPath>
       <itemPath>LinkedList.h</itemPath>
       <itemPath>Node.h</itemPath>
       <itemPath>Nodo.h</itemPath>
@@ -43,6 +44,8 @@
           <standard>8</standard>
         </ccTool>
       </compileType>
+      <item path="Cola.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="LinkedList.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Node.h" ex="false" tool="3" flavor2="0">
@@ -74,6 +77,8 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="Cola.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="LinkedList.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Node.h" ex="false" tool="3" flavor2="0">
