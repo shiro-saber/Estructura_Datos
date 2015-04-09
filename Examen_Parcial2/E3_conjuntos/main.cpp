@@ -2,6 +2,7 @@
 #include "LinkedList.h"
 #include "Pila.h"
 #include "Cola.h"
+#include <string>
 
 using namespace std;
 using namespace vcn;
@@ -156,5 +157,14 @@ float verificar(Cola<char> &expresion)
 
 int main(int argc, const char * argv[]) 
 {
-
+    Cola<char> expresion;
+    string operacion;
+    
+    cout << "ingresa una operacion " << endl;
+    cin >> operacion;
+    
+    transformar(operacion, expresion);
+    
+    float resultado = verificar(expresion);
+    cout << resultado << endl;
 }
