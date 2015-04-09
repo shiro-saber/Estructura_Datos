@@ -1,33 +1,34 @@
 #include <cstdlib>
-#include "Pila.h"
+#include "LinkedList.h"
 
 using namespace std;
+using namespace vcn;
 
-Pila<int> *check(Pila<int> *original , Pila<int> *repetidos)
+LinkedList<int> *check(LinkedList<int> *original , LinkedList<int> *repetidos)
 {
-    Pila<int> *aux = new Pila<int>();
+    LinkedList<int> *aux = new Pila<int>();
     //bool encontrado = false;
-    Nodo<int> *temp;
+    Node<int> *temp;
     int i;
 
     while((!original->empty()))
     {
-        temp = original->pop();
-        if(temp->getInfo() == original->pop()->getNext()->getInfo())
-            repetidos->push(temp);//encontrado = true;
+        temp = original->first();
+        if(temp->getInfo() == original->first()->getNext()->getInfo())
+            repetidos->insert(temp);//encontrado = true;
         else
-            aux->push(temp);
+            aux->insert(temp);
          
         i++;
             
         if(i == original->size())
-        temp = original->pop()->getNext();
+            temp = original->first()->getNext();
     }
 
     //regresar los elementos de aux->pila
     while(!aux->empty())
     {
-	original->push(aux->pop());
+	original->insert(aux->first());
     }
 
     delete aux;
@@ -36,22 +37,22 @@ Pila<int> *check(Pila<int> *original , Pila<int> *repetidos)
 
 int main(int argc, char** argv) 
 {
-    Pila<int> *original = new Pila<int>();
-    Pila<int> *repetidos = new Pila<int>();
+    LinkedList<int> *original = new Pila<int>();
+    LinkedList<int> *repetidos = new Pila<int>();
     
-    Nodo<int> *kuz = new Nodo<int>(1);
-    Nodo<int> *kuzemac = new Nodo<int>(7);
-    Nodo<int> *modishness = new Nodo<int>(5);
-    Nodo<int> *allah = new Nodo<int>(6);
-    Nodo<int> *uakbar = new Nodo<int>(8);
-    Nodo<int> *esto = new Nodo<int>(7);
+    Node<int> *kuz = new Nodo<int>(1);
+    Node<int> *kuzemac = new Nodo<int>(7);
+    Node<int> *modishness = new Nodo<int>(5);
+    Node<int> *allah = new Nodo<int>(6);
+    Node<int> *uakbar = new Nodo<int>(8);
+    Node<int> *esto = new Nodo<int>(7);
     
-    original->push(kuz);
-    original->push(kuzemac);
-    original->push(modishness);
-    original->push(allah);
-    original->push(uakbar);
-    original->push(esto);
+    original->insert(kuz);
+    original->insert(kuzemac);
+    original->insert(modishness);
+    original->insert(allah);
+    original->insert(uakbar);
+    original->insert(esto);
     
     cout << "Estas el la lista original: \n" << *original << endl;
     

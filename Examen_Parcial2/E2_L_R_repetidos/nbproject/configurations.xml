@@ -4,6 +4,8 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>LinkedList.h</itemPath>
+      <itemPath>Node.h</itemPath>
       <itemPath>Nodo.h</itemPath>
       <itemPath>Pila.h</itemPath>
     </logicalFolder>
@@ -41,6 +43,10 @@
           <standard>8</standard>
         </ccTool>
       </compileType>
+      <item path="LinkedList.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Node.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Nodo.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Pila.h" ex="false" tool="3" flavor2="0">
@@ -68,6 +74,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="LinkedList.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Node.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Nodo.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Pila.h" ex="false" tool="3" flavor2="0">
