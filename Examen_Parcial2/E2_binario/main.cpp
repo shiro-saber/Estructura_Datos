@@ -1,33 +1,36 @@
 #include <cstdlib>
+#include <string>
 #include "Pila.h"
 
 
 using namespace std;
 
-Pila<int> *convierte(Pila<int> *este)
+string binario(string decimal)
 {
-    while(!este->empty())
+    string binario = "";
+    int numero = atoi(decimal.c_str());
+    Pila<int> *temp = new Pila<int>();
+    while(numero != 0)
     {
-        for(int i = 0; i < este->size(); ++i)
-        {
-           este->pop()->getInfo()%2;
-           este->pop()->getNext();
-        }
+        Pila->push(numero%2);
+        numero = numero/2;
     }
+    while(!temp->empty())
+    {
+        binario.append(std::to_string(temp->pop()->getInfo()));
+    }
+    
+    delete temp;
+    return binario;
 }
 
 int main(int argc, char** argv) 
 {
-    Pila<int> *convertir = new Pila<int>();
-    Nodo<int> *uno = new Nodo<int>(5);
-    Nodo<int> *dos = new Nodo<int>(7);
-    Nodo<int> *tres = new Nodo<int>(8);
+    string numero;
+    cout << "Escribe numero" << endl;
+    cin >> numero;
     
-    convertir->push(uno);
-    convertir->push(dos);
-    convertir->push(tres);
-    
-    convierte(convertir);
+    binario(numero);
     return 0;
 }
 
