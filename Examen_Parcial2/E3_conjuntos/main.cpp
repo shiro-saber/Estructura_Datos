@@ -167,4 +167,6 @@ int main(int argc, const char * argv[])
     
     float resultado = verificar(expresion);
     cout << resultado << endl;
+    
+    return 0; 
 }
