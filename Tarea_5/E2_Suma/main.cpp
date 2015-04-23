@@ -17,7 +17,7 @@ int main(int argc, const char * argv[])
 	cout << endl << "La sumatoria de los elementos es: " << endl;
 	cout << nuevo->sumatoria() << endl << endl;
 	
-	//E4
+	//E2
 	ArbolBinario<int> * lal = new ArbolBinario<int>();
 
 	for (int i = 0; i<10; i++)
@@ -63,35 +63,5 @@ int main(int argc, const char * argv[])
 	esto->preOrden();
 	cout << endl;
 
-	//E4
-	char pre[] = { '$', '%', 'A', '&', '#' };
-	char in[] = { 'A', '%', '&', '$', '#' };
-	char pos[] = { 'A', '&', '%', '#', '$' };
-
-	int length = sizeof(in) / sizeof(in[0]);
-
-
-	cout << endl << "arbol creado con inorden y preorden" << endl;
-
-	ArbolBinario<char> * nu = new ArbolBinario<char>();
-	Nodo<char> * n = new Nodo<char>(*nu->creaArbol(pre, 0, length - 1, in, 0, length - 1));
-	nu = new ArbolBinario<char>(n);
-	nu->preOrden();
-	cout << endl << endl;
-
-	nu->imprimir();
-
-	//E5
-	cout << endl << "arbol ccon pozole e inorden" << endl;
-
-	ArbolBinario<char> *na = new ArbolBinario<char>();
-	Nodo<char> * v = new Nodo<char>(*na->creaArbolPosO(pos, 0, length - 1, in, 0, length - 1));
-	na = new ArbolBinario<char>(v);
-	na->inOrden();
-	cout << endl << endl;
-	na->imprimir();
-	cout << endl;
-
-	system("PAUSE");
 	return 0;
 }
