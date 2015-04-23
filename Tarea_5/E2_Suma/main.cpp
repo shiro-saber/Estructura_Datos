@@ -14,7 +14,9 @@ int main(int argc, const char * argv[])
 		nuevo->Insert(ele);
 	}
 
-	cout << endl << "La sumatoria de los elementos es: " << endl;
+	cout << endl << "E1 \n";
+        nuevo->imprimir();
+        cout << "\nLa sumatoria de los elementos es: " << endl;
 	cout << nuevo->sumatoria() << endl << endl;
 	
 	//E2
@@ -26,7 +28,7 @@ int main(int argc, const char * argv[])
 		lal->Insert(lul);
 	}
 
-	cout << "El arbol en pre-orden es: " << endl;
+	cout << "E2 \n El arbol en pre-orden es: " << endl;
 
 	lal->preOrden();
 
@@ -50,7 +52,7 @@ int main(int argc, const char * argv[])
 		esto->Insert(lol);
 	}
 
-	cout << endl << "El arbol en pre-orden es: " << endl;
+	cout << endl << "E3 \n El arbol en pre-orden es: " << endl;
 
 	esto->preOrden();
 
