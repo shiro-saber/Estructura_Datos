@@ -1,18 +1,110 @@
+#include <cstdlib>
 #include <iostream>
-#include <string.h>
+#include <string>
 #include "Persona.h"
-#include "BinaryTree.h"
-using namespace vcn;
+#include "ArbolBinario.h"
+
+using namespace std;
+
+ArbolBinario<Persona> allahUakbar;
+
+void agregarMorro()
+{
+    string padre;
+    string hijo;
+
+    cout << "Padre: ";
+    cin >> padre;
+    cout << "Hijo: ";
+    cin >> hijo;
+
+    Persona padre(padre);
+    Persona hijo(hijo);
 
 
-BinaryTree<Persona> arbol;
-void agregarHijo();
-void verDescendientes();
-void verHermanosYPrimos();
-void verAncestros();
-void establecerFallecido();
-void visualizarFallecidos();
-void visualizarVivos();
+    Nodo<Persona> * padreNodo = allahUakbar.buscar(padre);
+    Nodo<Persona> * hijoNodo = new Nodo<Persona>(hijo);
+
+    allahUakbar.Insert(padreNodo,hijoNodo);
+    allahUakbar.preOrden();
+}
+void verDescendientes()
+{
+    string padreNom;
+    
+    cout << "Padre: ";
+    cin >> padreNom;
+    
+    Persona padre(padreNom);
+    Nodo<Persona> * padreNode = allahUakbar.buscar(padre);
+    allahUakbar.preOrden();
+}
+void verHermanosYPrimos()
+{
+    string nombre;
+    
+    cout << "Nombre: ";
+    cin >> nombre;
+    
+    Persona persona(nombre);
+    
+    Nodo<Persona> * nodo = allahUakbar.buscar(persona);
+    allahUakbar.buscarPrimos(nodo);
+}
+void verAncestros()
+{
+    string padreNom;
+    
+    cout << "Padre: ";
+    cin >> padreNom;
+    
+    Persona padre(padreNom);
+    
+    Nodo<Persona> * padreNodo = allahUakbar.buscar(padre);
+    allahUakbar.ancestro(padreNodo);
+}
+void establecerFallecido()
+{
+    string nombre;
+    
+    cout << "Nombre fallecido: ";
+    cin >> nombre;
+    
+    int fecha;
+    
+    cout << "Fecha (dia, mes, anio): ";
+    cin >> fecha;
+
+    Persona nombreP(nombre);
+    Nodo<Persona> * nodo = allahUakbar.buscar(nombreP);
+
+    if (nodo == nullptr)
+    {
+        cout << "Noooot!!" << endl;
+    }
+    else
+    {
+        Persona nuevaPersona = nodo->getInfo();
+        nuevaPersona.setfallecido(true);
+        nuevaPersona.setfecha(fecha);
+        nodo->setInfo(nuevaPersona);
+        
+        cout << "Cambios realizados" << endl;
+    }
+
+}
+void visualizarFallecidos()
+{
+    int fecha;
+    cout << "Desde que dia murio (dia, mes, anio): ";
+    cin >> fecha;
+    
+    allahUakbar.preOrden(allahUakbar.getRaiz(), [](Nodo<Persona> *nodo){if (nodo->getInfo().getfallecido() && nodo->getInfo().getfecha() < 12123) return true; return false;});
+}
+void visualizarVivos()
+{
+    allahUakbar.preOrden(allahUakbar.getRaiz(), [](Nodo<Persona> *nodo){if (nodo->getInfo().getfallecido()) return true; return false;});
+}
 
 int main(int argc, const char * argv[]) {
 
@@ -21,14 +113,14 @@ int main(int argc, const char * argv[]) {
         cout << "[1] Agregar hijo"<< endl;
         cout << "[2] Ver descendientes"<< endl;
         cout << "[3] Ver hermanos y primos"<< endl;
-        cout << "[4] Ver ancestros"<< endl;
-        cout << "[5] Establecer fallecido"<< endl;
-        cout << "[6] Visualizar fallecidos"<< endl;
+        cout << "[4] Ver atras"<< endl;
+        cout << "[5] Establecer muerte"<< endl;
+        cout << "[6] Visualizar muertos"<< endl;
         cout << "[7] Visualizar vivos"<< endl;
 
         int opc;
         cin >> opc;
-        if (opc == 1) agregarHijo();
+        if (opc == 1) agregarMorro();
         else if (opc == 2) verDescendientes();
         else if (opc == 3) verHermanosYPrimos();
         else if (opc == 4) verAncestros();
@@ -36,97 +128,6 @@ int main(int argc, const char * argv[]) {
         else if (opc == 6) visualizarFallecidos();
         else if (opc == 7) visualizarVivos();
         else break;
-
     }
-
     return 0;
-}
-
-
-
-void agregarHijo()
-{
-    string padreNom;
-    string hijoNom;
-
-    cout << "Padre: ";
-    cin >> padreNom;
-    cout << "Hijo: ";
-    cin >> hijoNom;
-
-    Persona padre(padreNom);
-    Persona hijo(hijoNom);
-
-
-    BNode<Persona> * padreNode = arbol.search(padre);
-    BNode<Persona> * hijoNode = new BNode<Persona>(hijo);
-
-    arbol.insert(padreNode,hijoNode);
-    arbol.preOrder();
-}
-void verDescendientes()
-{
-    string padreNom;
-    cout << "Padre: ";
-    cin >> padreNom;
-    Persona padre(padreNom);
-    BNode<Persona> * padreNode = arbol.search(padre);
-    arbol.preOrder(padreNode);
-}
-void verHermanosYPrimos()
-{
-    string nombre;
-    cout << "Nombre: ";
-    cin >> nombre;
-    Persona persona(nombre);
-    BNode<Persona> * nodo = arbol.search(persona);
-    arbol.primosyHermanos(nodo);
-}
-void verAncestros()
-{
-    string padreNom;
-    cout << "Padre: ";
-    cin >> padreNom;
-    Persona padre(padreNom);
-    BNode<Persona> * padreNode = arbol.search(padre);
-    arbol.ancestors(padreNode);
-}
-void establecerFallecido()
-{
-    string nombre;
-    cout << "Nombre fallecido: ";
-    cin >> nombre;
-    int fecha;
-    cout << "Fecha (Formato DDMMAAAA): ";
-    cin >> fecha;
-
-    Persona nombreP(nombre);
-    BNode<Persona> * nodo = arbol.search(nombreP);
-
-    if (nodo == nullptr){
-        cout << "No se encontro" << endl;
-    }else{
-        Persona nuevaPersona = nodo->getInfo();
-        nuevaPersona.setfallecido(true);
-        nuevaPersona.setfecha(fecha);
-        nodo->setInfo(nuevaPersona);
-        cout << "Status modificado" << endl;
-    }
-
-}
-void visualizarFallecidos()
-{
-    int fecha;
-    cout << "Fecha de defunsión menor a (Formato DDMMAAAA): ";
-    cin >> fecha;
-    arbol.preOrder(arbol.getRoot(),
-                   [](BNode<Persona>* nodo){
-                        if (nodo->getInfo().getfallecido() && nodo->getInfo().getfecha() < 12123) return true; return false; });
-
-}
-void visualizarVivos()
-{
-    arbol.preOrder(arbol.getRoot(),
-                   [](BNode<Persona>* nodo){
-                        if (!nodo->getInfo().getfallecido()) return true; return false; });
 }

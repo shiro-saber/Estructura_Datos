@@ -11,23 +11,22 @@ class Persona
 	int fecha;
 
 	public:
-		Persona();
-		Persona(string);
+	Persona();
+	Persona(string);
 
-		bool operator > (Persona&);
+	bool operator > (Persona&);
         bool operator < (Persona&);
         bool operator == (Persona&);
         ostream &operator << (ostream);
 
-		void setnombre(string);
-		string getnombre();
+	void setnombre(string);
+	string getnombre();
 
-		void setfallecido(bool);
-		bool getfallecido();
+	void setfallecido(bool);
+	bool getfallecido();
 
-		void setfecha(int);
-		int getfecha();
-
+	void setfecha(int);
+	int getfecha();
 };
 
 Persona::Persona()
