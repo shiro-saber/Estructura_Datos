@@ -98,14 +98,14 @@ void RenderArea::transformPainter(QPainter &painter)
     bool ok = false;
     int uno;
     int dos;
-    uno = QInputDialog::getInt(this, tr("Input"), tr("Ingresa a donde lo quieres trasladar en x 1-100"),
-                                -1, 101, 1, ok);
-    dos = QInputDialog::getInt(this, tr("Input"), tr("Ingresa a donde lo quieres trasladar en y 1-100"),
-                                -1, 101, 1, ok);
 
     for (int i = 0; i < operations.size(); ++i) {
         switch (operations[i]) {
         case Translate:
+            uno = QInputDialog::getInt(this, tr("Input"), tr("Ingresa a donde lo quieres trasladar en x 1-100"),
+                                        25, 0, 101, 1, &ok);
+            dos = QInputDialog::getInt(this, tr("Input"), tr("Ingresa a donde lo quieres trasladar en y 1-100"),
+                                        25 ,0, 101, 1, &ok);
             painter.translate(uno, dos);
             break;
         case Scale:
