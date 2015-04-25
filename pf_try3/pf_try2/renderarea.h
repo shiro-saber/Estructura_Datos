@@ -1,18 +1,24 @@
 #ifndef RENDERAREA_H
 #define RENDERAREA_H
 
-#include <QFont>
 #include <QList>
 #include <QPainterPath>
 #include <QRect>
 #include <QWidget>
+#include <QString>
+#include <QInputDialog>
 
+using namespace std;
+
+QT_BEGIN_NAMESPACE
 class QPaintEvent;
+QT_END_NAMESPACE
 
 enum Operation { NoTransformation, Translate, Rotate, Scale };
 
 class RenderArea : public QWidget
 {
+
     Q_OBJECT
 
 public:
@@ -38,5 +44,4 @@ private:
     QRect xBoundingRect;
     QRect yBoundingRect;
 };
-
-#endif
+#endif // RENDERAREA_H

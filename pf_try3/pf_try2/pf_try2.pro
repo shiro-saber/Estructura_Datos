@@ -4,6 +4,9 @@
                renderarea.cpp \
                window.cpp
 
+ QT       += core gui
+ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+
  # install
  target.path = $$[QT_INSTALL_EXAMPLES]/painting/transformations
  sources.files = $$SOURCES $$HEADERS $$RESOURCES $$FORMS transformations.pro

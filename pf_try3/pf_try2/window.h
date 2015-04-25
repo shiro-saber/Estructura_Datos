@@ -1,13 +1,15 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
+#include "renderarea.h"
+
 #include <QList>
 #include <QPainterPath>
 #include <QWidget>
 
-#include "renderarea.h"
-
+QT_BEGIN_NAMESPACE
 class QComboBox;
+QT_END_NAMESPACE
 
 class Window : public QWidget
 {
