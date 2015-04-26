@@ -25,7 +25,7 @@ public slots:
 private:
     void setupShapes();
 
-    enum { NumTransformedAreas = 3 };
+    enum { NumTransformedAreas = 4 };
     RenderArea *originalRenderArea;
     RenderArea *transformedRenderAreas[NumTransformedAreas];
     QComboBox *shapeComboBox;

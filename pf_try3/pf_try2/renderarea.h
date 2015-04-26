@@ -14,7 +14,7 @@ QT_BEGIN_NAMESPACE
 class QPaintEvent;
 QT_END_NAMESPACE
 
-enum Operation { NoTransformation, Translate, Rotate, Scale };
+enum Operation { NoTransformation, Translate, Rotate, Scale, Reflection };
 
 class RenderArea : public QWidget
 {
@@ -43,5 +43,10 @@ private:
     QPainterPath shape;
     QRect xBoundingRect;
     QRect yBoundingRect;
+
+    double translateX();
+    double translateY();
+    int rotation();
+    double escala();
 };
 #endif // RENDERAREA_H

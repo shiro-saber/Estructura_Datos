@@ -1,7 +1,6 @@
 #include "renderarea.h"
 
 #include <QPainter>
-#include <QIntValidator>
 #include <QPaintEvent>
 
 RenderArea::RenderArea(QWidget *parent)
@@ -86,6 +85,7 @@ void RenderArea::drawShape(QPainter &painter)
 
 void RenderArea::transformPainter(QPainter &painter)
 {
+    double x;
     /*QTextStream streamIn(stdin);
     QString uno;
     QString dos;
@@ -95,28 +95,71 @@ void RenderArea::transformPainter(QPainter &painter)
     v.validate(uno,pos);
     dos = streamIn.readLine();
     v.validate(dos, pos);*/
-    bool ok = false;
-    int uno;
-    int dos;
-
-    for (int i = 0; i < operations.size(); ++i) {
-        switch (operations[i]) {
+    for (int i = 0; i < operations.size(); ++i)
+    {
+        switch (operations[i])
+        {
         case Translate:
-            uno = QInputDialog::getInt(this, tr("Input"), tr("Ingresa a donde lo quieres trasladar en x 1-100"),
-                                        25, 0, 101, 1, &ok);
-            dos = QInputDialog::getInt(this, tr("Input"), tr("Ingresa a donde lo quieres trasladar en y 1-100"),
-                                        25 ,0, 101, 1, &ok);
-            painter.translate(uno, dos);
+            painter.translate(translateX(), translateY());
             break;
         case Scale:
-            painter.scale(0.75, 0.75);
+            x = escala();
+            painter.scale(x, x);
             break;
         case Rotate:
-            painter.rotate(60);
+            painter.rotate(rotation());
+            break;
+        case Reflection:
+
             break;
         case NoTransformation:
         default:
             ;
         }
     }
+}
+
+
+double RenderArea::translateX()
+{
+    bool ok = false;
+    double uno;
+
+    uno = QInputDialog::getDouble(this, tr("Input"), tr("Ingresa a donde lo quieres trasladar en x 1-100"),
+                                1, 1, 101, 1, &ok);
+
+    return uno;
+}
+
+double RenderArea::translateY()
+{
+    double dos;
+    bool ok = false;
+
+    dos = QInputDialog::getDouble(this, tr("Input"), tr("Ingresa a donde lo quieres trasladar en y 1-100"),
+                                1 ,1, 101, 1, &ok);
+
+        return dos;
+}
+
+int RenderArea::rotation()
+{
+    int rot;
+    bool ok = false;
+
+    rot = QInputDialog::getInt(this, tr("Input"), tr("Ingresa lo quieres rotar 1-360"),
+                                1 ,1, 361, 1, &ok);
+
+    return rot;
+}
+
+double RenderArea::escala()
+{
+    double esc;
+    bool ok = false;
+
+    esc = QInputDialog::getDouble(this, tr("Input"), tr("Ingresa la escala que quieres 1-100"),
+                                  1 ,1, 101, 1, &ok);
+
+    return (esc/100);
 }

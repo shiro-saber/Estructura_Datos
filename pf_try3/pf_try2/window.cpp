@@ -22,9 +22,10 @@ Window::Window()
 
         operationComboBoxes[i] = new QComboBox;
         operationComboBoxes[i]->addItem(tr("No transformation"));
-        operationComboBoxes[i]->addItem(tr("Rotate by 60\xC2\xB0"));
-        operationComboBoxes[i]->addItem(tr("Scale to 75%"));
-        operationComboBoxes[i]->addItem(tr("Translate by (50, 50)"));
+        operationComboBoxes[i]->addItem(tr("Rotate"));
+        operationComboBoxes[i]->addItem(tr("Scale"));
+        operationComboBoxes[i]->addItem(tr("Translate"));
+        operationComboBoxes[i]->addItem(tr("Reflection"));
 
         connect(operationComboBoxes[i], SIGNAL(activated(int)),
                 this, SLOT(operationChanged()));
@@ -85,9 +86,9 @@ void Window::setupShapes()
 
     QPainterPath text;
     QFont font;
-    font.setPixelSize(50);
-    QRect fontBoundingRect = QFontMetrics(font).boundingRect(tr("Qt"));
-    text.addText(-QPointF(fontBoundingRect.center()), font, tr("Qt"));
+    font.setPixelSize(40);
+    QRect fontBoundingRect = QFontMetrics(font).boundingRect(tr("Hello"));
+    text.addText(-QPointF(fontBoundingRect.center()), font, tr("Hello"));
 
     shapes.append(clock);
     shapes.append(house);
