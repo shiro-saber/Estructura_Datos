@@ -43,7 +43,7 @@ void RenderArea::paintEvent(QPaintEvent *event)
     painter.setRenderHint(QPainter::Antialiasing);
     painter.fillRect(event->rect(), QBrush(Qt::white));
 
-    painter.translate(66, 66);
+    painter.translate(this->width()/3, this->height()/2.5);
     painter.save();
     transformPainter(painter);
     drawShape(painter);
@@ -110,6 +110,7 @@ void RenderArea::transformPainter(QPainter &painter)
             painter.rotate(rotation());
             break;
         case Reflection:
+            painter.translate (100,0);
             painter.scale(-1,-1);
             break;
         case NoTransformation:
