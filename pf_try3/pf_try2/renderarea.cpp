@@ -110,7 +110,7 @@ void RenderArea::transformPainter(QPainter &painter)
             painter.rotate(rotation());
             break;
         case Reflection:
-
+            painter.scale(-1,-1);
             break;
         case NoTransformation:
         default:

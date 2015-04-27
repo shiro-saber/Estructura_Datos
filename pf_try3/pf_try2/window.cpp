@@ -101,7 +101,7 @@ void Window::setupShapes()
 void Window::operationChanged()
 {
     static const Operation operationTable[] = {
-        NoTransformation, Rotate, Scale, Translate
+        NoTransformation, Rotate, Scale, Translate, Reflection
     };
 
     QList<Operation> operations;
