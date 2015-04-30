@@ -80,27 +80,19 @@ void RenderArea::drawOutline(QPainter &painter)
 
 void RenderArea::drawShape(QPainter &painter)
 {
-    painter.fillPath(shape, Qt::blue);
+    painter.fillPath(shape, Qt::green);
 }
 
 void RenderArea::transformPainter(QPainter &painter)
 {
     double x;
-    /*QTextStream streamIn(stdin);
-    QString uno;
-    QString dos;
-    int pos = 0;
-    QIntValidator v(10, 900, this);
-    uno = streamIn.readLine();
-    v.validate(uno,pos);
-    dos = streamIn.readLine();
-    v.validate(dos, pos);*/
+
     for (int i = 0; i < operations.size(); ++i)
     {
         switch (operations[i])
         {
         case Translate:
-            painter.translate(translateX(), translateY());
+            painter.translate(50, 50);
             break;
         case Scale:
             x = escala();
@@ -123,11 +115,10 @@ void RenderArea::transformPainter(QPainter &painter)
 
 double RenderArea::translateX()
 {
-    bool ok = false;
     double uno;
 
     uno = QInputDialog::getDouble(this, tr("Input"), tr("Ingresa a donde lo quieres trasladar en x 1-100"),
-                                1, 1, 101, 1, &ok);
+                                1, 1, 101, 1);
 
     return uno;
 }
@@ -135,21 +126,19 @@ double RenderArea::translateX()
 double RenderArea::translateY()
 {
     double dos;
-    bool ok = false;
 
     dos = QInputDialog::getDouble(this, tr("Input"), tr("Ingresa a donde lo quieres trasladar en y 1-100"),
-                                1 ,1, 101, 1, &ok);
+                                1 ,1, 101, 1);
 
-        return dos;
+    return dos;
 }
 
 int RenderArea::rotation()
 {
     int rot;
-    bool ok = false;
 
     rot = QInputDialog::getInt(this, tr("Input"), tr("Ingresa lo quieres rotar 1-360"),
-                                1 ,1, 361, 1, &ok);
+                                1 ,1, 361, 1);
 
     return rot;
 }
@@ -157,10 +146,9 @@ int RenderArea::rotation()
 double RenderArea::escala()
 {
     double esc;
-    bool ok = false;
 
     esc = QInputDialog::getDouble(this, tr("Input"), tr("Ingresa la escala que quieres 1-100"),
-                                  1 ,1, 101, 1, &ok);
+                                  1 ,1, 101, 1);
 
     return (esc/100);
 }

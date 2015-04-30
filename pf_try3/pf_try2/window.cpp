@@ -38,7 +38,7 @@ Window::Window()
     setupShapes();
     shapeSelected(0);
 
-    setWindowTitle(tr("pf_try3"));
+    setWindowTitle(tr("Transformaciones"));
 }
 
 void Window::setupShapes()
