@@ -5,7 +5,6 @@
 #include <QPainterPath>
 #include <QRect>
 #include <QWidget>
-#include <QString>
 #include <QInputDialog>
 
 using namespace std;
@@ -26,6 +25,7 @@ public:
 
     void setOperations(const QList<Operation> &operations);
     void setShape(const QPainterPath &shape);
+    void transformPainter(QPainter &painter);
 
     QSize minimumSizeHint() const;
     QSize sizeHint() const;
@@ -37,7 +37,6 @@ private:
     void drawCoordinates(QPainter &painter);
     void drawOutline(QPainter &painter);
     void drawShape(QPainter &painter);
-    void transformPainter(QPainter &painter);
 
     QList<Operation> operations;
     QPainterPath shape;
@@ -48,5 +47,6 @@ private:
     double translateY();
     int rotation();
     double escala();
+    double r();
 };
 #endif // RENDERAREA_H

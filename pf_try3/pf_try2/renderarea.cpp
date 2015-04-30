@@ -85,7 +85,7 @@ void RenderArea::drawShape(QPainter &painter)
 
 void RenderArea::transformPainter(QPainter &painter)
 {
-    double x;
+    //double x;
 
     for (int i = 0; i < operations.size(); ++i)
     {
@@ -95,14 +95,14 @@ void RenderArea::transformPainter(QPainter &painter)
             painter.translate(50, 50);
             break;
         case Scale:
-            x = escala();
-            painter.scale(x, x);
+            //x = escala();
+            painter.scale(2,2);
             break;
         case Rotate:
-            painter.rotate(rotation());
+            painter.rotate(50);
             break;
         case Reflection:
-            painter.translate (100,0);
+            //painter.translate (100,0);
             painter.scale(-1,-1);
             break;
         case NoTransformation:
@@ -147,8 +147,8 @@ double RenderArea::escala()
 {
     double esc;
 
-    esc = QInputDialog::getDouble(this, tr("Input"), tr("Ingresa la escala que quieres 1-100"),
-                                  1 ,1, 101, 1);
+    esc = QInputDialog::getDouble(this, tr("Input"), tr("Ingresa la escala que quieres 1-200"),
+                                  1 ,1, 201, 1);
 
     return (esc/100);
 }

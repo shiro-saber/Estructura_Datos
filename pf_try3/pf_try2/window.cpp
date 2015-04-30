@@ -110,6 +110,7 @@ void Window::operationChanged()
         operations.append(operationTable[index]);
         transformedRenderAreas[i]->setOperations(operations);
     }
+
 }
 
 void Window::shapeSelected(int index)
