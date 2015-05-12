@@ -172,8 +172,8 @@ void Grafo<V, A>::elMasEstable()
 template <class V, class A>
 bool Grafo<V, A>::completo()
 {
-    Vertice<V, A> *temp = this->vertices;
-    Vertice<V, A> *elotro = NULL;
+    Vertice<V, A> *temp = this->vertices; //cuantos vertices hay
+    Vertice<V, A> *elotro = NULL; //necesitamos otro para comparar si estan 
     elotro = temp;
     bool es;
     
@@ -181,7 +181,7 @@ bool Grafo<V, A>::completo()
     {
         //if(temp != NULL)
         //{
-            if(temp->cuentArista() == elotro->cuentArista())
+            if(temp->cuentArista() == elotro->cuentArista()) //compara si el numero de aristas en total es igual al del otro, en cuanto haya uno desigual ya no es completo
             {
                 es = true;
                 temp = temp->getSiguiente();

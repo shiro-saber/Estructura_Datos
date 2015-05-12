@@ -14,7 +14,7 @@ private:
 public:
 	ArbolBinario()
 	{
-		raiz = nullptr;
+		raiz = NULL;
 	}
 
 	ArbolBinario(Nodo<N> * r)
@@ -57,9 +57,9 @@ public:
 	Nodo <N> * buscarHermano(N info);
 	Nodo <N> * buscarHermano(N info, Nodo<N> * n);
 
-	void ancestro(Nodo<N> * node);
+	bool ancestro(Nodo<N> * n, Nodo<N> * m);
 
-	void buscarPrimos(Nodo<N> *node);
+	vector<Nodo <N> *> buscarPrimos(int prof);
 
 	int mostrarHojas();
 	int mostrarHojas(Nodo<N> * n);
@@ -87,8 +87,6 @@ public:
 
 	void creaArbolPos(char * pre, int pI, int pF, char * posO, int posI, int posF);
 	Nodo <N> * creaArbolPosO(char * pre, int pI, int pF, char * posO, int posI, int posF);
-        
-        vector<N> nodosNivel(vector<N> nodos, Nodo<N> * node, int nivAct, int nivel);
 
 	~ArbolBinario();
 };
@@ -111,7 +109,7 @@ int ArbolBinario<N>::profundidad(Nodo<N> * n)
 	int izq = 0;
 	int der = 0;
 
-	if (n != nullptr)
+	if (n != NULL)
 	{
 		izq = profundidad(n->getIzq());
 		der = profundidad(n->getDer());
@@ -135,9 +133,9 @@ int ArbolBinario<N>::mostrarHojas(Nodo<N> * n)
 {
 	int cont = 0;
 
-	if (n != nullptr)
+	if (n != NULL)
 	{
-		if (n->getIzq() == nullptr && n->getDer() == nullptr)
+		if (n->getIzq() == NULL && n->getDer() == NULL)
 		{
 			cout << *n;
 			cont++;
@@ -152,7 +150,7 @@ int ArbolBinario<N>::size(Nodo<N> *n)
 {
 	int nodos = 0;
 
-	if (n == nullptr)
+	if (n == NULL)
 	{
 		return 0;
 	}
@@ -167,13 +165,13 @@ template <class N>
 void ArbolBinario<N>::Clear()
 {
 	Clear(raiz);
-	raiz = nullptr;
+	raiz = NULL;
 }
 
 template <class N>
 void ArbolBinario<N>::Clear(Nodo<N> * n)
 {
-	if (n != nullptr)
+	if (n != NULL)
 	{
 		Clear(n->getIzq());
 		Clear(n->getDer());
@@ -190,7 +188,7 @@ void ArbolBinario<N>::preOrden()
 template <class N>
 void ArbolBinario<N>::preOrden(Nodo<N> * n)
 {
-	if (n != nullptr)
+	if (n != NULL)
 	{
 		std::cout << *n;
 		preOrden(n->getIzq());
@@ -207,7 +205,7 @@ void ArbolBinario<N>::inOrden()
 template <class N>
 void ArbolBinario<N>::inOrden(Nodo<N> * n)
 {
-	if (n != nullptr)
+	if (n != NULL)
 	{
 		inOrden(n->getIzq());
 		std::cout << *n;
@@ -224,7 +222,7 @@ void ArbolBinario<N>::posOrden()
 template <class N>
 void ArbolBinario<N>::posOrden(Nodo<N> * n)
 {
-	if (n != nullptr)
+	if (n != NULL)
 	{
 		posOrden(n->getIzq());
 		posOrden(n->getDer());
@@ -241,7 +239,7 @@ Nodo<N> * ArbolBinario<N>::buscarLugar()
 template <class N>
 void ArbolBinario<N>::Insert(Nodo<N> * n)
 {
-	if (raiz == nullptr)
+	if (raiz == NULL)
 	{
 		raiz = n;
 	}
@@ -250,7 +248,7 @@ void ArbolBinario<N>::Insert(Nodo<N> * n)
 		Nodo<N> * padre = buscarLugar();
 		n->setPadre(padre);
 
-		if (padre->getIzq() == nullptr){
+		if (padre->getIzq() == NULL){
 			padre->setIzq(n);
 		}
 		else
@@ -269,9 +267,9 @@ Nodo <N> * ArbolBinario<N>::buscar(N info)
 template <class N>
 Nodo <N> * ArbolBinario<N>::buscar(N info, Nodo<N> * n)
 {
-	Nodo<N> * temp = nullptr;
+	Nodo<N> * temp = NULL;
 
-	if (n != nullptr)
+	if (n != NULL)
 	{
 		if (n->getInfo() == info){
 			return n;
@@ -279,7 +277,7 @@ Nodo <N> * ArbolBinario<N>::buscar(N info, Nodo<N> * n)
 		else{
 
 			temp = buscar(info, n->getIzq());
-			if (temp == nullptr)
+			if (temp == NULL)
 			{
 				temp = buscar(info, n->getDer());
 			}
@@ -296,15 +294,15 @@ bool ArbolBinario<N>::InsertAt(N info, Nodo<N> * n)
 	bool insertado = false;
 	Nodo<N> * padre = buscar(info);
 
-	if (padre != nullptr)
+	if (padre != NULL)
 	{
-		if (padre->getIzq() == nullptr)
+		if (padre->getIzq() == NULL)
 		{
 			padre->setIzq(n);
 			n->setPadre(padre);
 			insertado = true;
 		}
-		else if (padre->getDer() == nullptr){
+		else if (padre->getDer() == NULL){
 			padre->setDer(n);
 			insertado = true;
 		}
@@ -318,28 +316,28 @@ Nodo<N> * ArbolBinario<N>::deleteAt(N info)
 	Nodo<N> * nodo = buscar(info);
 	Nodo<N> * temp;
 
-	if (nodo !=nullptr)
+	if (nodo != NULL)
 	{
-		if (nodo->getIzq() == nullptr && nodo->getDer() == nullptr)
+		if (nodo->getIzq() == NULL && nodo->getDer() == NULL)
 		{
 			temp = nodo->getPadre();
 
 			if (temp->getIzq() == nodo)
 			{
-				temp->setIzq(nullptr);
+				temp->setIzq(NULL);
 			}
 
 			else 
 			{
-				temp->setDer(nullptr);
+				temp->setDer(NULL);
 			}
 
-			nodo->setPadre(nullptr);
+			nodo->setPadre(NULL);
 		}
 
 		else
 		{
-			return nodo = nullptr;
+			return nodo = NULL;
 		}
 	}
 	return nodo;
@@ -348,7 +346,7 @@ Nodo<N> * ArbolBinario<N>::deleteAt(N info)
 template <class N>
 Nodo<N> * ArbolBinario<N>::buscarLugar(Nodo<N> * n)
 {
-	if ((n->getIzq() == nullptr) || (n->getDer() == nullptr))
+	if ((n->getIzq() == NULL) || (n->getDer() == NULL))
 	{
 		return n;
 
@@ -376,54 +374,70 @@ Nodo <N> * ArbolBinario<N>::buscarHermano(N info)
 }
 
 template <class N>
-void ArbolBinario<N>::buscarPrimos(Nodo<N> *nodo)
+Nodo <N> * ArbolBinario<N>::buscarHermano(N info, Nodo<N> * n)
 {
-    int niv = 0;
-    Nodo<N> *kuz = nodo;
-    while (kuz != nullptr)
-    {
-        kuz = kuz->getPadre();
-        niv++;
-    }
-    
-    niv--;
-    vector<N> primo;
-    primo.clear();
-    primo = this->nodosNivel(primo, raiz, 0, niv);
-    for(int i = 0; i < primo.size(); ++i)
-        cout << primo[i].getnombre() << endl;
+
+
+	if (n != NULL && n->getPadre() != NULL)
+	{
+
+
+		if (n->getPadre()->getIzq() == n)
+		{
+			return n->getPadre()->getDer();
+
+		}
+
+		else
+		{
+			return n->getPadre()->getIzq();
+
+		}
+
+	}
+
+	return NULL;
+
 }
 
-template<class N>
-vector<N> ArbolBinario<N>::nodosNivel(vector<N> nodos, Nodo<N> * node, int nivAct, int nivel)
-{
-    if (node && nivAct < nivel) 
-    {
-        vector<N> izq = nodosNivel(nodos,node->getIzq,(nivAct+1),nivel);
-        vector<N> der = nodosNivel(nodos,node->getDer(),(nivAct+1),nivel);
-        if (!izq.empty()) 
-            nodos.insert(nodos.end(), izq.begin(), izq.end());
-            
-        if (!der.empty()) 
-            nodos.insert(nodos.end(), der.begin(), der.end());
-    }
-    else
-    {
-        if (nivel == nivAct && node)
-            nodos.push_back(node->getInfo());
-    }
 
-    return nodos;
+
+template <class N>
+vector<Nodo <N> *> ArbolBinario<N>::buscarPrimos(int prof)
+{
+	vector <Nodo <N> * > padres;
+
+
+	padres.push_back(raiz);
+
+	while (prof-- > 0)
+	{
+		vector <Nodo <N> * > hijos;
+
+		for (int i = 0; i<padres.size(); i++)
+		{
+			if (padres[i]->getDer() != NULL)
+			{
+				hijos.push_back(padres[i]->getDer());
+			}
+			if (padres[i]->getIzq() != NULL)
+			{
+				hijos.push_back(padres[i]->getIzq());
+			}
+
+		}
+
+		padres = hijos;
+
+	}
+	return padres;
+
 }
 
 template <class N>
-void ArbolBinario<N>::ancestro(Nodo<N> * node)
+bool ArbolBinario<N>::ancestro(Nodo<N> * n, Nodo<N> * m)
 {
-    if (node) 
-    {
-        cout << node->getInfo().getnombre << " -> ";
-        ancestro(node->getPadre());
-    }
+
 }
 
 template <class N>
@@ -435,7 +449,7 @@ int ArbolBinario<N>::sumatoria()
 template <class N>
 int ArbolBinario<N>::sumatoria(Nodo<N> * n)
 {
-	if (n != nullptr)
+	if (n != NULL)
 	{
 		return n->getInfo() + sumatoria(n->getIzq()) + sumatoria(n->getDer());
 	}
@@ -451,7 +465,7 @@ ArbolBinario<N> * ArbolBinario<N>::copiar()
 template <class N>
 Nodo<N> * ArbolBinario<N>::copiar(Nodo<N> * n)
 {
-	if (n != nullptr)
+	if (n != NULL)
 	{
 		Nodo<N> * temp = new Nodo<N>(0);
 		temp->setInfo(n->getInfo());
@@ -459,13 +473,13 @@ Nodo<N> * ArbolBinario<N>::copiar(Nodo<N> * n)
 		Nodo<N> * izq = copiar(n->getIzq());
 		Nodo<N> * der = copiar(n->getDer());
 
-		if (izq != nullptr)
+		if (izq != NULL)
 		{
 			temp->setIzq(izq);
 			izq->setPadre(temp);
 		}
 
-		if (der != nullptr)
+		if (der != NULL)
 		{
 			temp->setDer(der);
 			der->setPadre(temp);
@@ -473,7 +487,7 @@ Nodo<N> * ArbolBinario<N>::copiar(Nodo<N> * n)
 		return temp;
 	}
 	else
-		return nullptr;
+		return NULL;
 }
 
 template <class N>
@@ -497,7 +511,7 @@ void ArbolBinario<N>::sumaArbol(Nodo<N> * n)
 template <class N>
 void ArbolBinario<N>::printTree(Nodo<N> *node, string str, string left, string right)
 {
-	if (node != nullptr)
+	if (node != NULL)
 	{
 		printTree(node->getDer(), right + "    ", right + "    |", right + "     ");
 		cout << str << "|----" << *node << endl;
@@ -522,7 +536,7 @@ template <class N>
 void ArbolBinario <N>::arbolReflex(Nodo <N> * n)
 {
 	Nodo <N> * temp;
-	if (n != nullptr){
+	if (n != NULL){
 		temp = n->getIzq();
 		n->setIzq(n->getDer());
 		n->setDer(temp);
@@ -574,14 +588,14 @@ Nodo <N> * ArbolBinario <N>::creaArbol(char * pre, int preInicio, int preFin, ch
 
 	Nodo<N> * n = new Nodo<N>(pre[preInicio]);
 	Nodo<N> *izq = creaArbol(pre, preInicio + 1, preInicio + elemIzq, inO, inInicio, raizIn - 1);
-	if (izq != nullptr)
+	if (izq != NULL)
 	{
 		n->setIzq(izq);
 		izq->setPadre(n);
 	}
 
 	Nodo<N> *der = creaArbol(pre, preInicio + elemIzq + 1, preFin, inO, raizIn + 1, inFin);
-	if (der != nullptr)
+	if (der != NULL)
 	{
 		n->setDer(der);
 		der->setPadre(n);
@@ -630,14 +644,14 @@ Nodo <N> * ArbolBinario <N>::creaArbolPosO(char * pos, int posInicio, int posFin
 
 	Nodo<N> * n = new Nodo<N>(pos[posFin]);
 	Nodo<N> *izq = creaArbolPosO(pos, posInicio, posInicio + elemIzq - 1, inO, inInicio, raizIn - 1);
-	if (izq != nullptr)
+	if (izq != NULL)
 	{
 		n->setIzq(izq);
 		izq->setPadre(n);
 	}
 
 	Nodo<N> *der = creaArbolPosO(pos, posInicio + elemIzq, posFin - 1, inO, raizIn + 1, inFin);
-	if (der != nullptr)
+	if (der != NULL)
 	{
 		n->setDer(der);
 		der->setPadre(n);

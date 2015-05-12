@@ -78,23 +78,8 @@ int main()
         otro->AdicionarArista(ela, elo, 2);
         otro->AdicionarArista(ela, ilo, 2);
         otro->AdicionarArista(ela, alo, 2);
-	/*cout << "los PORCENTAJES tiempos de los estudaintes: " << endl; //falta probar tiempos
-
-	tec->timposPareja(manuela, ANIOS);
-	tec->timposPareja(juan, ANIOS);
-	tec->timposPareja(paco, ANIOS);
-	tec->timposPareja(gabriel, ANIOS);
-	tec->timposPareja(victoria, ANIOS);
-
-	cout << endl;
-
-	cout << "el estudiante con mas relaciones" << endl;
-	cout << *(tec->elPimp()) <<endl;
-
-	tec->foreverAlones();
-
-	tec->elMasEstable();
-        */
+        
+        cout << "las relaciones en el campus son: " << *otro << endl;
         
         if(tec->completo())
             cout << "Es grafo completo :)" << endl;
@@ -109,3 +94,5 @@ int main()
 	system("PAUSE");
 	return 0;
 }
+
+
