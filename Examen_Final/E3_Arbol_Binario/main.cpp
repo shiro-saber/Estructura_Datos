@@ -8,7 +8,7 @@ int main(int argc, const char * argv[])
     //este es con preorden
         char pre[] = { 'G', 'E', 'A', 'I', 'B', 'M', 'C', 'L', 'D', 'F', 'K', 'J', 'H' };
 	char in[] = { 'I', 'A', 'B', 'E', 'G', 'L', 'D', 'C', 'F', 'M', 'K', 'H', 'J' };
-        char pos[] = { 'G', 'E', 'M', 'A', 'C', 'K', 'I', 'B', 'L', 'F', 'J', 'D', 'H' };
+        char pos[] = { 'G', 'E', 'M', 'A', 'C', 'K', 'I', 'B', 'L', 'F', 'J', 'D', 'H' }; //armado con la logica de arboles
 	
         int length = sizeof(in) / sizeof(in[0]);
 

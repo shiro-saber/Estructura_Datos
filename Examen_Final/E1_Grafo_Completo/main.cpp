@@ -2,7 +2,6 @@
 #include<cstdlib>
 #include <string>
 #include "Grafo.h"
-#define ANIOS 5
 
 using namespace std;
 
