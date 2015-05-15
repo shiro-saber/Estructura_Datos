@@ -1,5 +1,10 @@
 #include "Libro.h"
 
+int Libro::getAltura()
+{
+    return altura;
+}
+
 bool Libro::operator >(Libro & libro)
 {
     return altura > libro.altura;
