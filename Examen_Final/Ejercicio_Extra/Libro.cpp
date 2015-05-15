@@ -1,5 +1,10 @@
 #include "Libro.h"
 
+string Libro::getNombre()
+{
+    return titulo;
+}
+
 int Libro::getAltura()
 {
     return altura;

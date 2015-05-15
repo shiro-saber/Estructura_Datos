@@ -17,15 +17,11 @@
 using namespace std;
 using namespace vcn;
 
+int kuz(int N, int M, int K);
+LinkedList<Libro> *libros = new LinkedList<Libro>();
+
 int main(int argc, char** argv) 
-{
-    int K = 20; //#libros por estante
-    int N = 2; //estantes
-    int M = 10; //libros
-    int numproj;
-    
-    
-    LinkedList<Libro> *librero = new LinkedList<Libro>();
+{    
     Node<Libro> *uno = new Node<Libro>("Harry Potter", 560, 33.5);
     Node<Libro> *dos = new Node<Libro>("El señor de los anillos", 350, 22.5);
     Node<Libro> *tres = new Node<Libro>("El señor de los anillos", 350, 8.5);
@@ -37,34 +33,180 @@ int main(int argc, char** argv)
     Node<Libro> *nueve = new Node<Libro>("El señor de los anillos", 350, 29.5);
     Node<Libro> *diez = new Node<Libro>("El señor de los anillos", 350, 38.5);
     
-    librero->insertBack(uno);
-    librero->insertBack(dos);
-    librero->insertBack(tres);
-    librero->insertBack(cuatro);
-    librero->insertBack(cinco);
-    librero->insertBack(seis);
-    librero->insertBack(siete);
-    librero->insertBack(ocho);
-    librero->insertBack(nueve);
-    librero->insertBack(diez);
-    
-    int altotal;
-    Node<Libro> *temp;
-    
-    for (int i = 0; i < librero->size(); i++)
-    {
-        temp = librero[i];
-        if(librero[i] != nullptr)
-        {
-            if(temp->getInfo()->getAltura() < temp->getInfo()->getAltura())
-            {
-                altotal += temp->getInfo()->getAltura() - temp->getNext()->getInfo()->getAltura(); //vamos sumando las diferencias de las alturas de los libros
-            }
-        }
-    }
+    libros->insertBack(uno);
+    libros->insertBack(dos);
+    libros->insertBack(tres);
+    libros->insertBack(cuatro);
+    libros->insertBack(cinco);
+    libros->insertBack(seis);
+    libros->insertBack(siete);
+    libros->insertBack(ocho);
+    libros->insertBack(nueve);
+    libros->insertBack(diez);
 
-    cout << altotal << endl;
+    cout << kuz(3,10,4) << endl;
     
     return 0;
 }
+
+int kuz(int N, int M, int K){
+  int prol = 0;
+  string rep = "";
+  int cont = 0;
+  for(int i = 0; i < K; ++i){
+    if(cont >= M){
+      break;
+    }
+    cont ++;
+    rep += libros->at(i)->getInfo().getNombre() + "  ";
+    if(i+1 >= K){
+      break;
+    }
+    prol += (libros->at(i+1)->getInfo().getAltura() - libros->at(i)->getInfo().getAltura());
+    //cout << prolijidad;
+
+  }
+  rep+= "\n";
+
+  for(int i = K; i < K*2 ; ++i ){
+    if(cont >= M){
+      break;
+    }
+    rep += libros->at(i)->getInfo().getNombre() + "  ";
+    cont ++;
+    if(i+1 >= K*2 || i+1 >= M){
+      break;
+    }
+    prol += (libros->at(i+1)->getInfo().getAltura() - libros->at(i)->getInfo().getAltura());
+
+  }
+  rep+= "\n";
+
+  for(int i = K*2; i < K*3 ; ++i ){
+    if(cont >= M){
+      break;
+    }
+    rep += libros->at(i)->getInfo().getNombre() + "  ";
+    cont ++;
+    if(i+1 >= K*3 || i+1 >= M){
+      break;
+    }
+    prol += (libros->at(i+1)->getInfo().getAltura() - libros->at(i)->getInfo().getAltura());
+
+  }
+
+  for(int i = K*3; i < K*4; ++i){
+    if(cont >= M){
+      break;
+    }
+    rep += libros->at(i)->getInfo().getNombre() + "  ";
+    cont ++;
+    if(i+1 >= K*4 || i+1 >= M){
+      break;
+    }
+    prol += (libros->at(i+1)->getInfo().getAltura() - libros->at(i)->getInfo().getAltura());
+
+  }
+  rep+= "\n";
+
+  for(int i = K*4; i < K*5 ; ++i ){
+    if(cont >= M){
+      break;
+    }
+    rep += libros->at(i)->getInfo().getNombre() + "  ";
+    cont ++;
+    if(i+1 >= K*5 || i+1 >= M){
+      break;
+    }
+    prol += (libros->at(i+1)->getInfo().getAltura() - libros->at(i)->getInfo().getAltura());
+
+  }
+  rep+= "\n";
+
+  for(int i = K*6; i < K*7 ; ++i ){
+    if(cont >= M){
+      break;
+    }
+    rep += libros->at(i)->getInfo().getNombre() + "  ";
+    cont ++;
+    if(i+1 >= K*6 || i+1 >= M){
+      break;
+    }
+    prol += (libros->at(i+1)->getInfo().getAltura() - libros->at(i)->getInfo().getAltura());
+
+  }
+
+
+  for(int i = K; i < K*27; ++i ){
+    if(cont >= M){
+      break;
+    }
+    rep += libros->at(i)->getInfo().getNombre() + "  ";
+    cont ++;
+    if(i+1 >= K*7 || i+1 >= M){
+      break;
+    }
+    prol += (libros->at(i+1)->getInfo().getAltura() - libros->at(i)->getInfo().getAltura());
+
+  }
+  rep+= "\n";
+
+  for(int i = K*8; i < K*3 ; ++i ){
+    if(cont >= M){
+      break;
+    }
+    rep += libros->at(i)->getInfo().getNombre() + "  ";
+    cont ++;
+    if(i+1 >= K*8 || i+1 >= M){
+      break;
+    }
+    prol += (libros->at(i+1)->getInfo().getAltura() - libros->at(i)->getInfo().getAltura());
+
+  }
+
+  for(int i = K*9; i < K*4; ++i){
+    if(cont >= M){
+      break;
+    }
+    rep += libros->at(i)->getInfo().getNombre() + "  ";
+    cont ++;
+    if(i+1 >= K*9 || i+1 >= M){
+      break;
+    }
+    prol += (libros->at(i+1)->getInfo().getAltura() - libros->at(i)->getInfo().getAltura());
+
+  }
+  rep+= "\n";
+
+  for(int i = K*10; i < K*5 ; ++i ){
+    if(cont >= M){
+      break;
+    }
+    rep += libros->at(i)->getInfo().getNombre() + "  ";
+    cont ++;
+    if(i+1 >= K*10 || i+1 >= M){
+      break;
+    }
+    prol += (libros->at(i+1)->getInfo().getAltura() - libros->at(i)->getInfo().getAltura());
+
+  }
+  rep+= "\n";
+
+  for(int i = K*11; i < K*7 ; ++i ){
+    if(cont >= M){
+      break;
+    }
+    rep += libros->at(i)->getInfo().getNombre() + "  ";
+    cont ++;
+    if(i+1 >= K*12 || i+1 >= M){
+      break;
+    }
+    prol += (libros->at(i+1)->getInfo().getAltura() - libros->at(i)->getInfo().getAltura());
+
+  }
+  cout << rep << endl;;
+
+  return prol;
+}
+
 
