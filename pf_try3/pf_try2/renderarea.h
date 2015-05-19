@@ -11,6 +11,7 @@ using namespace std;
 
 QT_BEGIN_NAMESPACE
 class QPaintEvent;
+class RenderFlags;
 QT_END_NAMESPACE
 
 enum Operation { NoTransformation, Translate, Rotate, Scale, Reflection };
@@ -23,9 +24,11 @@ class RenderArea : public QWidget
 public:
     RenderArea(QWidget *parent = 0);
 
+    void translateX();
+    bool i;
     void setOperations(const QList<Operation> &operations);
     void setShape(const QPainterPath &shape);
-    void transformPainter(QPainter &painter);
+    void transformPainter(QPainter &painter, double trasx, double trasy, int rot, double esc);
 
     QSize minimumSizeHint() const;
     QSize sizeHint() const;
@@ -43,7 +46,6 @@ private:
     QRect xBoundingRect;
     QRect yBoundingRect;
 
-    double translateX();
     double translateY();
     int rotation();
     double escala();

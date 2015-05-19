@@ -111,6 +111,8 @@ void Window::operationChanged()
         transformedRenderAreas[i]->setOperations(operations);
     }
 
+    //originalRenderArea->translateX();
+
 }
 
 void Window::shapeSelected(int index)

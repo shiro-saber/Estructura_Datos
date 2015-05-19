@@ -13,6 +13,7 @@ RenderArea::RenderArea(QWidget *parent)
     QFontMetrics fontMetrics(newFont);
     xBoundingRect = fontMetrics.boundingRect(tr("x"));
     yBoundingRect = fontMetrics.boundingRect(tr("y"));
+    i = true;
 }
 
 void RenderArea::setOperations(const QList<Operation> &operations)
@@ -45,11 +46,13 @@ void RenderArea::paintEvent(QPaintEvent *event)
 
     painter.translate(this->width()/3, this->height()/2.5);
     painter.save();
-    transformPainter(painter);
+    if(i)
+        this->translateX();
+    //transformPainter(painter, 0, 0, 0, 0);
     drawShape(painter);
     painter.restore();
     drawOutline(painter);
-    transformPainter(painter);
+    //transformPainter(painter, 0, 0, 0, 0);
     drawCoordinates(painter);
 }
 
@@ -83,7 +86,7 @@ void RenderArea::drawShape(QPainter &painter)
     painter.fillPath(shape, Qt::green);
 }
 
-void RenderArea::transformPainter(QPainter &painter)
+void RenderArea::transformPainter(QPainter &painter, double trasx, double trasy, int rot, double esc)
 {
     //double x;
 
@@ -92,14 +95,14 @@ void RenderArea::transformPainter(QPainter &painter)
         switch (operations[i])
         {
         case Translate:
-            painter.translate(50, 50);
+            painter.translate(trasx, trasy);
             break;
         case Scale:
             //x = escala();
-            painter.scale(2,2);
+            painter.scale(esc, esc);
             break;
         case Rotate:
-            painter.rotate(50);
+            painter.rotate(rot);
             break;
         case Reflection:
             //painter.translate (100,0);
@@ -113,42 +116,38 @@ void RenderArea::transformPainter(QPainter &painter)
 }
 
 
-double RenderArea::translateX()
+void RenderArea::translateX()
 {
+    i = false;
+    QPainter painter(this);
     double uno;
+    bool ok;
+
+    //QWidget::setUpdatesEnabled(true);
 
     uno = QInputDialog::getDouble(this, tr("Input"), tr("Ingresa a donde lo quieres trasladar en x 1-100"),
-                                1, 1, 101, 1);
+                                1, 1, 101, 1, &ok);
 
-    return uno;
-}
-
-double RenderArea::translateY()
-{
     double dos;
 
     dos = QInputDialog::getDouble(this, tr("Input"), tr("Ingresa a donde lo quieres trasladar en y 1-100"),
                                 1 ,1, 101, 1);
 
-    return dos;
-}
-
-int RenderArea::rotation()
-{
     int rot;
 
     rot = QInputDialog::getInt(this, tr("Input"), tr("Ingresa lo quieres rotar 1-360"),
                                 1 ,1, 361, 1);
 
-    return rot;
-}
+    //return rot;
 
-double RenderArea::escala()
-{
     double esc;
 
     esc = QInputDialog::getDouble(this, tr("Input"), tr("Ingresa la escala que quieres 1-200"),
                                   1 ,1, 201, 1);
 
-    return (esc/100);
+    //return (esc/100);
+
+    if(ok)
+        transformPainter(painter, uno, dos, rot, esc);
+    //return uno;
 }
