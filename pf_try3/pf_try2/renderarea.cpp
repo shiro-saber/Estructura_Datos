@@ -46,13 +46,13 @@ void RenderArea::paintEvent(QPaintEvent *event)
 
     painter.translate(this->width()/3, this->height()/2.5);
     painter.save();
-    if(i)
-        this->translateX();
-    //transformPainter(painter, 0, 0, 0, 0);
+    //if(i)
+      //  this->translateX();
+    transformPainter(painter, 0, 0, 0, 0);
     drawShape(painter);
     painter.restore();
     drawOutline(painter);
-    //transformPainter(painter, 0, 0, 0, 0);
+    transformPainter(painter, 0, 0, 0, 0);
     drawCoordinates(painter);
 }
 
@@ -95,14 +95,14 @@ void RenderArea::transformPainter(QPainter &painter, double trasx, double trasy,
         switch (operations[i])
         {
         case Translate:
-            painter.translate(trasx, trasy);
+            painter.translate(50, 50);
             break;
         case Scale:
             //x = escala();
-            painter.scale(esc, esc);
+            painter.scale(3, 3);
             break;
         case Rotate:
-            painter.rotate(rot);
+            painter.rotate(65);
             break;
         case Reflection:
             //painter.translate (100,0);
